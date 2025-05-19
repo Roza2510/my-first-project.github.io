@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Жалал-Абаддагы топ-4 казуу ишканалары</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 28px;
+      color: #333;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .factory {
+      background-color: white;
+      padding: 25px;
+      margin: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      width: calc(33.333% - 30px);
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      box-sizing: border-box;
+      border: 2px solid blue;
+    }
+
+    .factory:hover {
+      transform: scale(1.05);
+      background-color: orange;
+    }
+
+    .factory img {
+      width: 60%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-size: 24px;
+      margin-top: 12px;
+      margin-bottom: 0;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: rgb(24, 73, 198);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Жалал-Абаддагы топ-4 казуу ишканалары</h1>
+  <div class="container">
+    <div class="factory" onclick="showModal(0)">
+      <img src="/images/«Кыргызалтын» ААК.png" alt="Кыргызалтын ААК" />
+      <h2>«Кыргызалтын» ААК</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(1)">
+      <img src="/images/«Макмал Голд Компани» ЖЧК.png" alt="Макмал Голд Компани" />
+      <h2>«Макмал Голд Компани» ЖЧК</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(2)">
+      <img src="/images/«Фулл Голд Майнинг» ЖЧК.jpeg" alt="Фулл Голд Майнинг" />
+      <h2>«Фулл Голд Майнинг» ЖЧК</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(3)">
+      <img src="/images/«Эти Бакыр Терексай» ЖЧК.jpeg" alt="Эти Бакыр Терексай" />
+      <h2>«Эти Бакыр Терексай» ЖЧК</h2>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalText = document.getElementById("modal-text");
+
+    const data = [
+      '«Кыргызалтын» ААК – Кыргызстандын мамлекеттик алтын казуу ишканасы, Жалал-Абад облусундагы Терексай кени менен белгилүү. Кен алтын жана сурьма казууга багытталган. Сайт: <a href="https://kyrgyzaltyn.kg" target="_blank" style="color:#fff; text-decoration: underline;">kyrgyzaltyn.kg</a>',
+      '«Макмал Голд Компани» ЖЧК – Макмал алтын кенин иштетүүчү жеке компания. Алтын өндүрүү тармагында иш алып барат. (Википедия маалыматтары боюнча)',
+      '«Фулл Голд Майнинг» ЖЧК – Ала-Бука районундагы алтын казуу ишканасы. Компания алтын өндүрүү жана чалгындоо иштерин жүргүзөт. (Азаттык Уналгысы маалыматы)',
+      '«Эти Бакыр Терексай» ЖЧК – Ала-Бука жана Чаткалдагы алтын жана бакыр кендерин иштетүүчү компания.'
+    ];
+
+    function showModal(index) {
+      modalText.innerHTML = data[index];
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>

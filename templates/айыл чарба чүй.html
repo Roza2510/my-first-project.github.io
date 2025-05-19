@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Чүй облусундагы топ-4 айыл чарба ишканалары</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 28px;
+      color: #333;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .factory {
+      background-color: white;
+      padding: 25px;
+      margin: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      width: calc(33.333% - 30px);
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      box-sizing: border-box;
+      border: 2px solid blue;
+    }
+
+    .factory:hover {
+      transform: scale(1.05);
+      background-color: orange;
+    }
+
+    .factory img {
+      width: 60%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-size: 26px;
+      margin-top: 12px;
+      margin-bottom: 0;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: rgb(24, 73, 198);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Чүй облусундагы топ-4 айыл чарба ишканалары</h1>
+  <div class="container">
+    <div class="factory" onclick="showModal(0)">
+      <img src="/images/Natural Prodakts ОсОО.jpeg" alt="Natural Prodakts" />
+      <h2>Natural Prodakts ОсОО</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(1)">
+      <img src="/images/Pamir sEZ Bishkek.jpeg" alt="Pamir sEZ Bishkek" />
+      <h2>Pamir sEZ Bishkek</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(2)">
+        <img src="/images/Байыш Агро ОсОО.png" alt="Baiysh Agro" />
+        <h2>Байыш Агро ОсОО</h2>
+      </div>
+
+    <div class="factory" onclick="showModal(3)">
+      <img src="/images/Atalyk Grupp ЗАО.png" alt="Atalyk Grupp ЗАО" />
+      <h2>Atalyk Grupp ЗАО</h2>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalText = document.getElementById("modal-text");
+
+    const data = [
+      'Natural Prodakts ОсОО: Айыл чарба жана токой чарбасы багытында иштейт. Бул ишкана айыл чарба продукцияларын өндүрүү жана иштетүү менен алектенет.',
+      'Pamir sEZ Bishkek: Айыл чарба жана токой чарбасы багытында. Түрдүү айыл чарба кызматтарын көрсөтөт жана продукция өндүрөт.',
+      'Uxar ОсОО: Айыл чарба жана токой чарбасы багытында. Жер иштетүү, үрөн өстүрүү жана айыл чарба продукцияларын өндүрүү менен алектенет.',
+      'Atalyk Grupp ЗАО: Айыл чарба жана токой чарбасы багытында. Органикалык продукцияларды өндүрүү, кайра иштетүү жана экспорттоо тармагында белгилүү.'
+    ];
+
+    function showModal(index) {
+      modalText.textContent = data[index];
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>

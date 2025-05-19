@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Нарын шаарындагы кызматтар</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* борборлоштуруу */
+      gap: 20px; /* элементтердин ортосунда аралык */
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 28px;
+      color: #333;
+      width: 100%;
+    }
+
+    .service {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  width: calc(50% - 30px); /* экиден эки катар үчүн тууралайбыз */
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 2px solid blue; /* Бордер кошулду */
+}
+
+.service:hover {
+  transform: scale(1.05);
+  background-color: orange;
+}
+
+
+    h2 {
+      color: #2c3e50;
+      font-size: 22px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+    .service img {
+  width: 50%;  /* мурун 70% болчу, азыр кичирейтилди */
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: rgb(24, 73, 198);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+
+    /* Кичирейтилген экрандар үчүн жоопкерчиликтүү дизайн */
+    @media (max-width: 600px) {
+      .service {
+        width: 100%; /* мобилде толук туура */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Нарын шаарындагы кызматтар</h1>
+
+  <div class="service" onclick="showModal(0)">
+    <img src="/images/«Нур Телеком» ЖЧК (O!) – Нарын кеңсеси.jpeg" alt="Нур Телеком ЖЧК (O!) – Нарын кеңсеси" />
+    <h2>📱 Нур Телеком ЖЧК (O!) – Нарын кеңсеси</h2>
+  </div>
+
+  <div class="service" onclick="showModal(1)">
+    <img src="/images/«Кыргыз Почтасы» – Нарын почта бөлүмү.jpeg" alt="Кыргыз Почтасы – Нарын почта бөлүмү" />
+    <h2>📮 Кыргыз Почтасы – Нарын почта бөлүмү</h2>
+  </div>
+
+  <div class="service" onclick="showModal(2)">
+    <img src="/images/«Нарын Техникалык Колледжи».jpeg" alt="Нарын Техникалык Колледжи" />
+    <h2>🎓 Нарын Техникалык Колледжи</h2>
+  </div>
+
+  <div class="service" onclick="showModal(3)">
+    <img src="/images/«Салкын-Тор» туристтик компаниясы.jpeg" alt="Салкын-Тор туристтик компаниясы" />
+    <h2>🏞 Салкын-Тор туристтик компаниясы</h2>
+  </div>
+
+  <!-- Модал терезеси -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalText = document.getElementById("modal-text");
+
+    const data = [
+      `"Нур Телеком" ЖЧК (O!) – Нарын кеңсеси
+Тармак: Уюлдук байланыш жана интернет
+Кызматтар: Мобилдик байланыш, 4G интернет, SIM-карта кызматы
+Дареги: Нарын шаары, борбордук базардын жанында`,
+
+      `"Кыргыз Почтасы" – Нарын почта бөлүмү
+Тармак: Почта жана логистика
+Кызматтар: Кат, жүктөрдү жеткирүү, төлөмдөрдү кабыл алуу
+Дареги: Нарын шаары, борбордук почта бөлүмү`,
+
+      `"Нарын Техникалык Колледжи"
+Тармак: Билим берүү кызматы
+Кызматтар: Орто кесиптик билим берүү, окуу программалары
+Дареги: Нарын шаары, Чкалов көчөсү`,
+
+      `"Салкын-Тор" туристтик компаниясы
+Тармак: Туризм жана экскурсия кызматтары
+Кызматтар: Турларды уюштуруу, гиддик кызмат, тоого чыгуу
+Дареги: Нарын облусу, Кочкор району, кеңсеси Нарын шаарында да бар`
+    ];
+
+    function showModal(index) {
+      modalText.textContent = data[index];
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>

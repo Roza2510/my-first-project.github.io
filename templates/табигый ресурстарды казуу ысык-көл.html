@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ысык-Көлдөгү топ-4 табигый ресурстарды казуу ишканалары</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 28px;
+      color: #333;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .factory {
+      background-color: white;
+      padding: 25px;
+      margin: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      width: calc(33.333% - 30px);
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      box-sizing: border-box;
+      border: 2px solid blue; /* Бул жерде бордер кошулду */
+    }
+
+    .factory:hover {
+      transform: scale(1.05);
+      background-color: orange;
+    }
+
+    .factory img {
+      width: 60%; /* Мурда 40% эле */
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-size: 26px; /* Мурда 22px эле */
+      margin-top: 12px;
+      margin-bottom: 0;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: rgb(24, 73, 198);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ысык-Көлдөгү табигый ресурстарды казуу ишканалары</h1>
+  <div class="container">
+    <div class="factory" onclick="showModal(0)">
+      <img src="/images/Таш-Шабакты карьерлери.jpeg" alt="Таш-Шабакты карьерлери" />
+      <h2>Таш-Шабакты карьерлери</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(2)">
+      <img src="/images/Жайылма көмүр казуу ишканалары.jpeg" alt="Жайылма көмүр казуу ишканалары" />
+      <h2>Жайылма көмүр казуу ишканалары</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(3)">
+      <img src="/images/Минералдык суу өндүрүүчү ишканалар.jpeg" alt="Минералдык суу өндүрүүчү ишканалар" />
+      <h2>Минералдык суу өндүрүүчү ишканалар</h2>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalText = document.getElementById("modal-text");
+
+    const data = [
+      'Таш-Шабакты карьерлери — курулуш материалдары (курун таш, кум, шагыл) казылат. Көптөгөн курулуш жана жол куруу иштеринде колдонулат.',
+      'Ашкөз кумдуктар — кум казуу ишканалары, негизинен курулуш кумун өндүрүшөт.',
+      'Жайылма көмүр казуу ишканалары — Ысык-Көл облусунда көмүр запастары чектелүү болсо да, айрым кичинекей көмүр казуу жайлары бар.',
+      'Минералдык суу өндүрүүчү ишканалар — Ысык-Көлдүн минералдык суулары жана табигый ресурстары өндүрүү үчүн атайын ишканалар иштешет.'
+    ];
+
+    function showModal(index) {
+      modalText.textContent = data[index];
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нарын</title>
+</head>
+<body>
+    <style>
+        /* Контейнер */
+        .industry-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            border: blue;
+        }
+        
+        /* Индустрия блоктору */
+        .industry-block {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            border-color: blue;
+            text-align: center;
+            background-color: #fff;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 48%; /* Эки колонкага туура келет */
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        
+      
+        .industry-block:hover {
+            background-color: #FF8A1E;
+            transform: scale(1.05); /* Блокту кичине чоңойтуу */
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        /* Мобильдик экрандар үчүн стили */
+        @media (max-width: 768px) {
+            .industry-block {
+                width: 100%; /* Мобилдик үчүн толук кеңдик */
+            }
+        }
+        </style>
+        
+        <div class="industry-container">
+            <a href="/templates/өндүрүш нарын.html" class="industry-block">
+                <h1>Өндүрүш</h1>
+            </a>
+        
+            <a href="/templates/айыл чарба нарын.html" class="industry-block">
+                <h1>Айыл чарбасы</h1>
+            </a>
+        
+            <a href="/templates/курулуш нарын.html" class="industry-block">
+                <h1>Курулуш</h1>
+            </a>
+        
+            <a href="/templates/табигый ресурстарды казуу нарын.html" class="industry-block">
+                <h1>Табигый ресурстарды казуу</h1>
+            </a>
+        
+            <a href="/templates/кызматкөрсөтүү нарын.html" class="industry-block">
+                <h1>Кызмат көрсөтүү</h1>
+            </a>
+        
+            <a href="/templates/маалыматтык технологиялар нарын.html" class="industry-block">
+                <h1>Маалыматтык технологиялар</h1>
+            </a>
+        
+            <a href="/templates/туризм нарын.html" class="industry-block">
+                <h1>Туризм</h1>
+            </a>
+        
+            <a href="/templates/маданият нарын.html" class="industry-block">
+                <h1>Маданият</h1>
+            </a>
+        
+            <a href="/templates/экология жана кайра иштетүү нарын.html" class="industry-block">
+                <h1>Экология жана кайра иштетүү</h1>
+            </a>
+        
+            <a href="/templates/илим жана изилдөө нарын.html" class="industry-block">
+                <h1>Илим жана Изилдөө</h1>
+            </a>
+        </div>
+        
+        
+
+
+</body>
+</html>

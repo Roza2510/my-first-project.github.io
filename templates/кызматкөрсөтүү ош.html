@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ош шаарындагы топ 4 кызмат көрсөтүүчү ишканалар</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 28px;
+      color: #333;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .factory {
+      background-color: white;
+      padding: 25px;
+      margin: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      width: calc(33.333% - 30px);
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      box-sizing: border-box;
+      border: 2px solid blue;
+    }
+
+    .factory:hover {
+      transform: scale(1.05);
+      background-color: orange;
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-size: 22px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .factory img {
+      width: 40%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: rgb(24, 73, 198);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ош шаарындагы топ 4 кызмат көрсөтүүчү ишканалар</h1>
+  <div class="container">
+    <div class="factory" onclick="showModal(0)">
+      <img src="/images/EPAM Systems.jpeg" alt="EPAM Systems" />
+      <h2>EPAM Systems</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(1)">
+      <img src="/images/мегаком.jpeg" alt="MegaCom" />
+      <h2>MegaCom</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(2)">
+      <img src="/images/WFP Ош бөлүмү.png" alt="WFP Ош бөлүмү" />
+      <h2>WFP Ош бөлүмү</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(3)">
+      <img src="/images/Кыргыз Унаа Курулуш.jpeg" alt="Кыргыз Унаа Курулуш" />
+      <h2>Кыргыз Унаа Курулуш</h2>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalText = document.getElementById("modal-text");
+
+    const data = [
+      'EPAM Systems — дүйнөлүк IT-компания. Ош шаарындагы кеңсеси программалык камсыздоо жана консалтинг кызматтарын көрсөтөт.',
+      'MegaCom — байланыш жана интернет кызматтарын сунуштаган Кыргызстандагы ири операторлордун бири.',
+      'Дүйнөлүк Азык-түлүк Программасы (WFP) — гуманитардык азык-түлүк жардамын көрсөтүүчү эл аралык уюм.',
+      'Кыргыз Унаа Курулуш ОсОО — машина куруу жана энергетикалык жабдууларды өндүрүүчү жергиликтүү ишкана.'
+    ];
+
+    function showModal(index) {
+      modalText.textContent = data[index];
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>

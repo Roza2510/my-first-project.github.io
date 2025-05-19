@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ысык-Көлдөгү топ-4 экология жана кайра иштетүү ишканалары</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 28px;
+      color: #333;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .factory {
+      background-color: white;
+      padding: 25px;
+      margin: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      width: calc(33.333% - 30px);
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      box-sizing: border-box;
+      border: 2px solid blue;
+    }
+
+    .factory:hover {
+      transform: scale(1.05);
+      background-color: orange;
+      color: white;
+    }
+
+    .factory img {
+      width: 60%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-size: 26px;
+      margin-top: 12px;
+      margin-bottom: 0;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: rgb(24, 73, 198);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ысык-Көлдөгү топ-4 экология жана кайра иштетүү ишканалары</h1>
+  <div class="container">
+    <div class="factory" onclick="showModal(0)">
+      <img src="/images/«Ак-Булак Плюс» ЖЧКсы.jpeg" alt="Ак-Булак Плюс" />
+      <h2>«Ак-Булак Плюс» ЖЧКсы</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(1)">
+      <img src="/images/«Эко Ферма» дыйкан-фермердик чарбасы.jpeg" alt="Эко Ферма" />
+      <h2>«Эко Ферма» дыйкан-фермердик чарбасы</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(2)">
+      <img src="/images/«Эко-Технолоджи» ишканасы.jpeg" alt="Эко-Технолоджи" />
+      <h2>«Эко-Технолоджи» ишканасы</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(3)">
+      <img src="/images/Бостери жана Саруу айылдарындагы кайра иштетүүчү жайлар.jpeg" alt="Бостери жана Саруу айылдары" />
+      <h2>Бостери жана Саруу айылдарындагы кайра иштетүүчү жайлар</h2>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalText = document.getElementById("modal-text");
+
+    const data = [
+      `«Ак-Булак Плюс» ЖЧКсы – Каракол шаарында жайгашкан бул сүттү кайра иштетүүчү ири заводдун өндүрүштүк кубаттуулугу суткасына 20 тонна сүттү түзөт, ал эми сезон учурунда суткасына 60 тоннага чейин сүттү кайра иштетет. Ишкана майсыздандырылган кургак сүт, каймак майы жана катуу сырдын бир нече түрүн өндүрөт.<br><br>
+      Маалымат булактары: Proclimate, УТРК, ABAL.KG`,
+
+      `«Эко Ферма» дыйкан-фермердик чарбасы – Тоң районундагы бул ферма кореялык KOPIA долбоорунун алкагында мөмө-жемиштерди кургатуу технологияларын колдонуп, органикалык продукция өндүрүүдө. Долбоордун максаты – экспорттук потенциалды кеңейтүү жана жумуш орундарын түзүү.<br><br>
+      Маалымат булагы: Минводресурсов КР`,
+
+      `«Эко-Технолоджи» ишканасы – Бул компания пластиктин бардык түрлөрүн, целлофан, картон, кап жана алюминийди кабыл алып, кайра иштетүүдө. Ишкана желим бөтөлкөлөрдү экспортко чыгарат, ал эми калган катуу тиричилик калдыктарын жергиликтүү кайра иштетүүчүлөргө сатат.<br><br>
+      Маалымат булактары: Super.kg, Proclimate, Минприроды КР`,
+
+      `Бостери жана Саруу айылдарындагы кайра иштетүүчү жайлар – Бостери айылында таштандыны сорттоочу, Саруу айылында таштандыны кайра иштетүүчү жайлар ачылган. Бул жайларда катуу темир-тезектен башка бардык желим баштык, бөтөлкөлөр кайра иштелип чыгат.<br><br>
+      Маалымат булагы: Super.kg`
+    ];
+
+    function showModal(index) {
+      modalText.innerHTML = data[index];
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>

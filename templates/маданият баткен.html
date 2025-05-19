@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Баткендеги театрлар</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 28px;
+      color: #333;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .place {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      width: 300px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      box-sizing: border-box;
+      border: 2px solid blue;
+    }
+
+    .place:hover {
+      transform: scale(1.05);
+      background-color: orange;
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-size: 22px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .place img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      object-fit: cover;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: rgb(24, 73, 198);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Баткен облусундагы 4 театр</h1>
+  <div class="container">
+    <div class="place" onclick="showModal(0)">
+      <img src="/images/А. Жайнаков театры.jpeg" alt="Баткен облустук театр" />
+      <h2>1. А. Жайнаков театры</h2>
+    </div>
+
+    <div class="place" onclick="showModal(1)">
+      <img src="/images/Мектептик форум-театрлар.jpeg" alt="Форум театр" />
+      <h2>2. Мектептик форум-театрлар</h2>
+    </div>
+
+    <div class="place" onclick="showModal(2)">
+      <img src="/images/Жергиликтүү театрлашкан көрсөтүүлөр.jpeg" alt="Жергиликтүү көрсөтүүлөр" />
+      <h2>3. Жергиликтүү театрлашкан көрсөтүүлөр</h2>
+    </div>
+
+    <div class="place" onclick="showModal(3)">
+      <img src="/images/Драма ийримдери.jpeg" alt="Аймактык маданият үйлөрү" />
+      <h2>4. Драма ийримдери</h2>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalText = document.getElementById("modal-text");
+
+    const data = [
+      `<strong>А. Жайнаков атындагы Баткен облустук музыкалык-драма театры</strong><br/>
+       Облустагы жалгыз кесиптик театр. Түрдүү спектаклдерди коёт, маданий иш-чараларга активдүү катышат.`,
+
+      `<strong>Мектептик форум-театрлар</strong><br/>
+       Чек ара аймактарындагы мектептерде форум-театр форматында тарбиялык иш-чаралар өткөрүлөт (мисалы, Ак-Сай айылындагы Б. Хожаев мектеби).`,
+
+      `<strong>Жергиликтүү театрлашкан көрсөтүүлөр</strong><br/>
+       Ар түрдүү маданий майрамдарда (мисалы, Нооруз, Улуттук көчмөндөр оюндары) уюштурулган жергиликтүү элдик спектаклдер.`,
+
+      `<strong>Аймактык маданият үйлөрүндөгү драма ийримдери</strong><br/>
+       Айылдык маданият үйлөрүндө жана клубдарда драма ийримдери аркылуу кичи сахналык көрсөтүүлөр коюлуп турат.`
+    ];
+
+    function showModal(index) {
+      modalText.innerHTML = data[index];
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>

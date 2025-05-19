@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Нарын облусунун табигый ресурстарын казуучу ишканалар</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 28px;
+      color: #333;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .factory {
+  background-color: white;
+  padding: 25px;
+  margin: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  width: calc(33.333% - 30px);
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 2px solid blue; /* Бул жерде бордер кошулду */
+}
+
+
+    .factory:hover {
+      transform: scale(1.05);
+      background-color: orange;
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-size: 22px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .factory img {
+      width: 70%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: rgb(24, 73, 198);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Нарын облусунун табигый ресурстарын казуучу ишканалар</h1>
+  <div class="container">
+    <div class="factory" onclick="showModal(0)">
+      <img src="/images/«Кыргызкөмүр» МИ, Кара-Кече.jpeg" alt="Кыргызкөмүр Кара-Кече" />
+      <h2>🚜 «Кыргызкөмүр» МИ, Кара-Кече</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(1)">
+      <img src="/images/«Ак-Талаа» мамлекеттик көмүр ишканасы.jpeg" alt="Ак-Талаа көмүр ишканасы" />
+      <h2>🏞 «Ак-Талаа» мамлекеттик көмүр ишканасы</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(2)">
+      <img src="/images/«Борбор Азия Көмүр» ЖЧК.jpeg" alt="Борбор Азия Көмүр" />
+      <h2>⛏ «Борбор Азия Көмүр» ЖЧК</h2>
+    </div>
+
+    <div class="factory" onclick="showModal(3)">
+      <img src="/images/«Тенгиз Көмүр» ЖЧК.jpeg" alt="Тенгиз Көмүр ЖЧК" />
+      <h2>🔥 «Тенгиз Көмүр» ЖЧК</h2>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalText = document.getElementById("modal-text");
+
+    const data = [
+      '«Кыргызкөмүр» мамлекеттик ишканасынын «Кара-Кече» филиалы – Жумгал районундагы эң ири көмүр кени. Бишкек шаары жана башка аймактар үчүн көмүр жеткирүүчү негизги булак.',
+      '«Ак-Талаа» мамлекеттик көмүр казуу ишканасы – Ак-Талаа районунда көмүр өндүрүү менен алектенет.',
+      '«Борбор Азия Көмүр» ЖЧК – Жумгал районунун Ак-Улак айылында жайгашкан, көмүр казуу жана сатууну жүргүзөт.',
+      '«Тенгиз Көмүр» ЖЧК – Ат-Башы районунда жайгашып, Нарын облусун кыш мезгилинде көмүр менен камсыздайт.'
+    ];
+
+    function showModal(index) {
+      modalText.textContent = data[index];
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>
